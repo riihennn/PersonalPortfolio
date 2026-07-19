@@ -53,6 +53,16 @@ const projects = [
     description:
       "A premium resort and hospitality website crafted for TheLostCabins Resort to deliver an immersive booking experience with elegant visuals, smooth interactions, and nature-inspired design aesthetics."
   },
+    {
+    id: 6,
+    title: 'Urbaniq',
+    year: '2026',
+    type: 'Real Estate Management System',
+    image: '/urbaniq.webp',
+    url: 'https://urbaniq-psi.vercel.app/',
+    description:
+      "A full-stack real estate management platform developed as a team project, featuring Buyer, Property Owner, Agent, and Admin modules with property management, agent assignment, inquiry handling, visit scheduling, and role-based workflows."
+  }
 ];
 
   return (
