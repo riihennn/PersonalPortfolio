@@ -1,27 +1,93 @@
 import React, { useEffect, memo } from 'react';
 import DotField from './DotField';
 
+const calculateDuration = (startDate, endDate = new Date()) => {
+  const start = new Date(startDate);
+  const end = new Date(endDate);
+  const totalMonths =
+    (end.getFullYear() - start.getFullYear()) * 12 +
+    (end.getMonth() - start.getMonth()) +
+    1;
+  if (totalMonths <= 0) return '1 mo';
+  const years = Math.floor(totalMonths / 12);
+  const months = totalMonths % 12;
+  const yearStr = years > 0 ? `${years} yr${years > 1 ? 's' : ''}` : '';
+  const monthStr = months > 0 ? `${months} mo${months > 1 ? 's' : ''}` : '';
+  if (years > 0 && months > 0) return `${yearStr} ${monthStr}`;
+  return yearStr || monthStr || '1 mo';
+};
+
 const ExperienceSection = memo(function ExperienceSection({ theme = 'dark', setTheme = () => {} }) {
   const experiences = [
-{
-id: 1,
-period: 'JULY 2025 - PRESENT',
-title: 'MERN Stack Developer',
-company: 'Bridgeon Solutions',
-type: 'On-site',
-description:
-'Working as a MERN Stack Developer with experience in designing, developing, and maintaining full-stack web applications. Skilled in building scalable solutions using MongoDB, Express.js, React.js, Node.js, and Next.js while collaborating with cross-functional teams to deliver high-quality products.',
-responsibilities: [
-'Developing and maintaining full-stack web applications using the MERN stack',
-'Building responsive and modern user interfaces with React.js, Next.js, Tailwind CSS, and Bootstrap',
-'Designing and integrating RESTful APIs using Node.js and Express.js',
-'Managing databases and data models using MongoDB',
-'Optimizing application performance, security, and user experience',
-'Collaborating with designers, developers, and stakeholders to deliver business requirements',
-'Using Git and GitHub for version control and team collaboration',
-'Deploying and maintaining applications on cloud platforms and production environments'
-],
-      technologies: ['HTML', 'CSS', 'JavaScript','TypeScript', 'Bootstrap',"Tailwind", "Redux", 'React.js','Next.js', 'Node.js', 'MongoDB', 'Express.js', 'Git','AWS','GitHub', 'Postman', 'Responsive Design']
+    {
+      id: 1,
+      period: `Oct 2026 - Present · ${calculateDuration('2026-10-01')}`,
+      title: 'Full Stack Developer',
+      company: 'Hexa Branding',
+      type: 'Full-time • On-site',
+      description:
+        'Developing and maintaining full-stack web applications using React.js, Next.js, Node.js, Express.js, and MongoDB. Building REST APIs, implementing authentication and authorization, integrating third-party services, and delivering high-performance, scalable web solutions.',
+      responsibilities: [
+        'Developing and maintaining full-stack web applications using React.js, Next.js, Node.js, Express.js, and MongoDB',
+        'Designing and implementing robust RESTful APIs with secure authentication and authorization',
+        'Building responsive, modern user interfaces and optimizing web applications for maximum speed and scalability',
+        'Integrating third-party services and managing MongoDB database architectures',
+        'Collaborating with cross-functional teams to translate business requirements into production-ready features',
+        'Optimizing application performance, security, and deploying full-stack solutions'
+      ],
+      technologies: [
+        'React.js',
+        'Next.js',
+        'Node.js',
+        'Express.js',
+        'MongoDB',
+        'JavaScript',
+        'TypeScript',
+        'REST APIs',
+        'Tailwind CSS',
+        'Redux',
+        'Git',
+        'GitHub',
+        'Postman'
+      ]
+    },
+    {
+      id: 2,
+      period: 'Jul 2025 - Sep 2026 · 1 yr 3 mos',
+      title: 'Full Stack Developer Intern',
+      company: 'Bridgeon',
+      type: 'Internship • On-site',
+      description:
+        'Worked as a Full Stack Developer Intern at Bridgeon, building end-to-end web solutions and combining responsive front-end interfaces with robust back-end systems using the MERN stack.',
+      responsibilities: [
+        'Developing and maintaining full-stack web applications using the MERN stack',
+        'Building responsive and modern user interfaces with React.js, Next.js, Tailwind CSS, and Bootstrap',
+        'Designing and integrating RESTful APIs using Node.js and Express.js',
+        'Managing databases and data models using MongoDB',
+        'Optimizing application performance, security, and user experience',
+        'Collaborating with designers, developers, and stakeholders to deliver business requirements',
+        'Using Git and GitHub for version control and team collaboration',
+        'Deploying and maintaining applications on cloud platforms and production environments'
+      ],
+      technologies: [
+        'HTML',
+        'CSS',
+        'JavaScript',
+        'TypeScript',
+        'Bootstrap',
+        'Tailwind',
+        'Redux',
+        'React.js',
+        'Next.js',
+        'Node.js',
+        'MongoDB',
+        'Express.js',
+        'Git',
+        'AWS',
+        'GitHub',
+        'Postman',
+        'Responsive Design'
+      ]
     }
   ];
 
@@ -137,7 +203,7 @@ responsibilities: [
                 <div className="relative z-10 grid md:grid-cols-3 gap-8">
                   {/* Left Column - Main Info */}
                   <div className="md:col-span-2">
-                    <p className="text-neutral-500 tracking-[0.3em] text-xs uppercase mb-3 font-semibold">
+                    <p className={`${theme === 'light' ? 'text-neutral-500' : 'text-neutral-400'} text-xs sm:text-sm font-medium tracking-wide mb-3 transition-colors duration-700`}>
                       {exp.period}
                     </p>
                     <h2 className={`text-2xl md:text-3xl lg:text-4xl font-bold mb-2 ${theme === 'light' ? 'text-black' : 'text-neutral-100'} transition-colors duration-700`}>
